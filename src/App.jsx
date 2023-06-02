@@ -1,11 +1,11 @@
 import React from "react";
 import "./App.css";
-import CardComponent from "./CardComponent.jsx";
+import Welcome from "./Welcome.jsx";
 
 function App() {
   return (
     <div>
-
+      <Welcome name="Adrian Antochi(Tutor)"></Welcome>
     </div>
     
   );

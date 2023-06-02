@@ -1,11 +1,13 @@
 import React from "react";
 import "./App.css";
-import CardComponent from "./CardComponent.jsx";
+import Hello from "./Hello.jsx";  /* I do not know why it is underlined */
+import Message from "./Message.jsx";
 
 function App() {
   return (
     <div>
-
+      <Hello/>
+      <Message/>
     </div>
     
   );

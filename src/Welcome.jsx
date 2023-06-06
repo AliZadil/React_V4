@@ -5,7 +5,7 @@ function Welcome({ name = 'Guest', age = 'Unknown' }) {
   return (
     <div>
       <p>Welcome, {name}!</p>
-      <Age age={age}></Age>
+      {age>18 ? <Age age={age}></Age>: ''}
     </div>
   );
 }

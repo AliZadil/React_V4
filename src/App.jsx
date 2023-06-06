@@ -8,7 +8,7 @@ function App() {
         name={<strong>Adrian Antochi</strong>} 
         age={28} 
       />
-      <Welcome/> {/*default*/}
+      <Welcome name="Ali" age={12}></Welcome>
     </div>
   );
 }

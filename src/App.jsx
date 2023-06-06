@@ -4,8 +4,11 @@ import Welcome from './Welcome.jsx';
 function App() {
   return (
     <div>
-      <Welcome name="Adrian Antochi" age={28} />
-      <Welcome />
+      <Welcome 
+        name={<strong>Adrian Antochi</strong>} 
+        age={28} 
+      />
+      <Welcome/> {/*default*/}
     </div>
   );
 }

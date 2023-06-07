@@ -8,7 +8,7 @@ function App() {
         name={<strong>Adrian Antochi</strong>} 
         age={28} 
       />
-      <Welcome name="Ali"></Welcome>
+      <Welcome name="Ali" age={77}></Welcome>
     </div>
   );
 }

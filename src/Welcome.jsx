@@ -1,11 +1,11 @@
 import React from 'react';
 import Age from './Age';
 
-function Welcome({ name = 'Guest', age = 'Unknown' }) {
+function Welcome({ name = 'Guest', age }) {
   return (
     <div>
       <p>Welcome, {name}!</p>
-      {age>18 ? <Age age={age}></Age>: ''}
+      {age && <Age age={age} />}
     </div>
   );
 }

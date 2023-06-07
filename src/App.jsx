@@ -1,14 +1,10 @@
 import React from 'react';
-import Welcome from './Welcome.jsx';
+import Counter from './Counter.jsx';
 
 function App() {
   return (
     <div>
-      <Welcome 
-        name={<strong>Adrian Antochi</strong>} 
-        age={28} 
-      />
-      <Welcome name="John" age={12}></Welcome>
+      <Counter></Counter>
     </div>
   );
 }

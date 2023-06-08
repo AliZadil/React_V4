@@ -2,12 +2,9 @@ import React, { Component } from 'react';
 import CounterDisplay from './CounterDisplay';
 
 class Counter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      count: props.initialValue || 0
-    };
-  }
+  state = {
+    count: this.props.initialValue || 0
+  };
 
   componentDidMount() {
     this.intervalId = setInterval(() => {
@@ -27,3 +24,5 @@ class Counter extends Component {
 }
 
 export default Counter;
+
+// no longer requires a constructor //

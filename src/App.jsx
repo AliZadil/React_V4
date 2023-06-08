@@ -4,7 +4,7 @@ import Counter from './Counter.jsx';
 function App() {
   return (
     <div>
-      <Counter></Counter>
+      <Counter initialValue={10} incrementAmount={2} incrementInterval={500} />
     </div>
   );
 }

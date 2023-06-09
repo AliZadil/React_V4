@@ -1,8 +1,8 @@
 import React from 'react';
-import ClickCounter from './ClickCounter.jsx';
+import ClickTracker from './ClickTracker.jsx';
 
 function App() {
-  return <ClickCounter />;
+  return <ClickTracker />;
 }
 
 export default App;

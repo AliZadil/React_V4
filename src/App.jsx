@@ -1,8 +1,13 @@
 import React from 'react';
-import ClickTracker from './ClickTracker.jsx';
+import InteractiveWelcome from './InteractiveWelcome.jsx';  
+/* don't know why it is underlined */
 
 function App() {
-  return <ClickTracker />;
+  return (
+    <div>
+      <InteractiveWelcome />
+    </div>
+  );
 }
 
 export default App;

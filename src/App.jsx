@@ -1,16 +1,8 @@
-import React from "react";
-import "./App.css";
-import Hello from "./Hello.jsx";  /* I do not know why it is underlined */
-import Message from "./Message.jsx";
+import React from 'react';
+import ClickCounter from './ClickCounter.jsx';
 
 function App() {
-  return (
-    <div>
-      <Hello/>
-      <Message/>
-    </div>
-    
-  );
+  return <ClickCounter />;
 }
 
 export default App;

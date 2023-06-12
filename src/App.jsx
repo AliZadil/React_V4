@@ -3,7 +3,6 @@ import Login from './Login';
 
 function App() {
   const handleLogin = (credentials) => {
-    // Handle the login logic using the received credentials
     console.log('Login:', credentials);
   };
 

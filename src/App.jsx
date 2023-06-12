@@ -1,8 +1,17 @@
 import React from 'react';
-import ClickTracker from './ClickTracker.jsx';
+import Login from './Login';
 
 function App() {
-  return <ClickTracker />;
+  const handleLogin = (credentials) => {
+    // Handle the login logic using the received credentials
+    console.log('Login:', credentials);
+  };
+
+  return (
+    <div>
+      <Login onLogin={handleLogin} />
+    </div>
+  );
 }
 
 export default App;

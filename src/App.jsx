@@ -1,11 +1,11 @@
 import React from 'react';
-import Login from './Login';
-import UncontrolledLogin from './UncontrolledLogin';
+import ToDoList from './ToDoList';
 
 function App() {
   return (
     <div>
-      <UncontrolledLogin></UncontrolledLogin>
+      <h1>Todo List</h1>
+      <ToDoList />
     </div>
   );
 }

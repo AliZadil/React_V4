@@ -28,4 +28,28 @@ function ToDoList() {
   );
 }
 
+
+
+import React from "react";
+
+export default class TodoList extends React.Component {
+
+    state = {
+        items: [],
+        input: ""
+    }
+
+    handleItemPush = () => {
+        this.setState({
+            items: [...this.state.items, this.state.input],
+            input: ""
+        })
+    }
+
+    handleInput = (event) => {
+        this.setState({
+            input: event.target.value
+        })
+    }
+  }
 export default ToDoList;

@@ -1,55 +1,27 @@
-import React, { useState } from 'react';
+import React from "react"
 
-function ToDoList() {
-  const [inputValue, setInputValue] = useState('');
-  const [items, setItems] = useState([]);
-
-  const handleInputChange = (ev) => {
-    setInputValue(ev.target.value);
-  };
-
-  const handleAddTodo = () => {
-    if (inputValue.trim() !== '') {
-      setItems((prevItems) => [...prevItems, inputValue]);
-      setInputValue('');
-    }
-  };
-
-  return (
-    <div>
-      <input type="text" value={inputValue} onChange={handleInputChange} />
-      <button onClick={handleAddTodo}>Add Todo</button>
-      <ul>
-        {items.map((item, index) => (
-          <li key={index}>{item}</li>
-        ))}
-      </ul>
-    </div>
-  );
-}
-
-
-
-import React from "react";
-
-export default class TodoList extends React.Component {
-
+export default class ToDoList extends React.Component {
     state = {
-        items: [],
-        input: ""
+        items: ["Is", "this", "what", "you", "wanted?"],
+        newTodo: "",
     }
-
-    handleItemPush = () => {
+    addItem = () => {
+        this.setState(state => ({
+            items: [...state.items, state.newTodo],
+        }))
         this.setState({
-            items: [...this.state.items, this.state.input],
-            input: ""
+            newTodo: "",
         })
     }
-
-    handleInput = (event) => {
-        this.setState({
-            input: event.target.value
-        })
+    render() {
+        return <div>
+            <input type="text" name="newTodo" value={this.state.newTodo} onChange={(event) => {
+                this.setState({ newTodo: event.target.value})
+            }} />
+            <button onClick={this.addItem}>Add</button>
+            <ul>
+                {this.state.items.map((item) => <li>{item}</li>)}
+            </ul>
+        </div>
     }
-  }
-export default ToDoList;
+}

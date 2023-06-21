@@ -33,6 +33,7 @@ export default class ToDoList extends Component {
 
   render() {
     const { items, newTodo } = this.state;
+    const { render } = this.props;
 
     return (
       <div>
@@ -44,14 +45,7 @@ export default class ToDoList extends Component {
         />
         <button onClick={this.addItem}>Add</button>
         <button onClick={this.resetItems}>Reset</button>
-        <ul>
-          {items.map((item, index) => (
-            <li key={item}>
-              {item}
-              <button onClick={() => this.removeItem(index)}>Remove</button>
-            </li>
-          ))}
-        </ul>
+        {render(items, this.removeItem)}
       </div>
     );
   }

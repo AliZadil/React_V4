@@ -1,55 +1,57 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class Login extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      username: '',
-      password: ''
-    };
-  }
+export default function Login({ onLogin }) {
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+  const [remember, setRemember] = useState(false);
 
-  handleChange = (ev) => {
-    this.setState({
-      [ev.target.name]: ev.target.value
-    });
+  const handleChange = (ev) => {
+    if (ev.target.name === 'username') {
+      setUsername(ev.target.value);
+    } else if (ev.target.name === 'password') {
+      setPassword(ev.target.value);
+    } else if (ev.target.name === 'remember') {
+      setRemember(ev.target.checked);
+    }
   };
 
-  handleLogin = () => {
-    const { onLogin } = this.props;
-    const { username, password } = this.state;
-
+  const handleLogin = () => {
     onLogin({ username, password });
   };
 
-  render() {
-    const { username, password } = this.state;
-    const isDisabled = username === '' || password === '';
+  const isDisabled = username === '' || password === '';
 
-    return (
-      <div>
+  return (
+    <div>
+      <input
+        type="text"
+        name="username"
+        value={username}
+        onChange={handleChange}
+        placeholder="Username"
+      />
+      <br />
+      <input
+        type="password"
+        name="password"
+        value={password}
+        onChange={handleChange}
+        placeholder="Password"
+      />
+      <br />
+      <label>
         <input
-          type="text"
-          name="username"
-          value={username}
-          onChange={this.handleChange}
-          placeholder="Username"
+          type="checkbox"
+          name="remember"
+          checked={remember}
+          onChange={handleChange}
         />
-        <br />
-        <input
-          type="password"
-          name="password"
-          value={password}
-          onChange={this.handleChange}
-          placeholder="Password"
-        />
-        <br />
-        <button onClick={this.handleLogin} disabled={isDisabled}>
-          Login
-        </button>
-      </div>
-    );
-  }
+        Remember me
+      </label>
+      <br />
+      <button onClick={handleLogin} disabled={isDisabled}>
+        Login
+      </button>
+    </div>
+  );
 }
-
-export default Login;

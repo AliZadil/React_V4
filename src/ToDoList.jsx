@@ -25,6 +25,12 @@ export default class ToDoList extends Component {
     });
   };
 
+  removeItem = (index) => {
+    this.setState((prevState) => ({
+      items: prevState.items.filter((_, i) => i !== index),
+    }));
+  };
+
   render() {
     const { items, newTodo } = this.state;
 
@@ -39,8 +45,11 @@ export default class ToDoList extends Component {
         <button onClick={this.addItem}>Add</button>
         <button onClick={this.resetItems}>Reset</button>
         <ul>
-          {items.map((item) => (
-            <li key={item}>{item}</li>
+          {items.map((item, index) => (
+            <li key={item}>
+              {item}
+              <button onClick={() => this.removeItem(index)}>Remove</button>
+            </li>
           ))}
         </ul>
       </div>

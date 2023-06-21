@@ -1,8 +1,16 @@
-import React from 'react';
-import ClickCounter from './ClickCounter.jsx';
+import React, { useState } from 'react';
+import ClickCounter from './ClickCounter';
 
 function App() {
-  return <ClickCounter />;
+  const handleCounterChange = (counterValue) => {
+    console.log('Counter changed:', counterValue);
+  };
+
+  return (
+    <div>
+      <ClickCounter onCounterChange={handleCounterChange} />
+    </div>
+  );
 }
 
 export default App;

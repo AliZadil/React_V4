@@ -14,7 +14,7 @@ function GithubUser({ username }) {
     return <div>Loading...</div>;
   }
 
-  console.log(userData);
+  console.log(userData); // to see the keys
 
   const { login, name, public_repos, followers, following } = userData;
 

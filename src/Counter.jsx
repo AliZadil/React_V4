@@ -1,18 +1,16 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import CounterDisplay from './CounterDisplay';
+import useCounter from './useCounter';
 
 export default function Counter(props) {
-  const [count, setCount] = useState(props.initialValue || 0);
+  const { count, increment, decrement, reset } = useCounter(props.initialValue);
 
-  useEffect(() => {
-    const intervalId = setInterval(() => {
-      setCount(prevCount => prevCount + (props.incrementAmount || 1));
-    }, props.incrementInterval || 1000);
-
-    return () => {
-      clearInterval(intervalId);
-    };
-  }, [props.incrementAmount, props.incrementInterval]);
-
-  return <CounterDisplay count={count} />;
+  return (
+    <div>
+      <CounterDisplay count={count} />
+      <button onClick={increment}>Increment</button>
+      <button onClick={decrement}>Decrement</button>
+      <button onClick={reset}>Reset</button>
+    </div>
+  );
 }

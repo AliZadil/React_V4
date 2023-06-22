@@ -1,10 +1,11 @@
 import React from 'react';
-import Counter from './Counter.jsx';
+import GithubUser from './GithubUser';
 
 function App() {
   return (
     <div>
-      <Counter initialValue={10} incrementAmount={2} incrementInterval={1000} />
+      <GithubUser username="AliZadil" />
+      <GithubUser username="doublemacro" />
     </div>
   );
 }

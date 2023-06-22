@@ -5,6 +5,7 @@ function App() {
   return (
     <div>
       <GithubUser username="AliZadil" />
+      <br />
       <GithubUser username="doublemacro" />
     </div>
   );

@@ -14,12 +14,13 @@ function GithubUser({ username }) {
     return <div>Loading...</div>;
   }
 
-  const { login, name, avatar_url, public_repos, followers, following } = userData;
+  console.log(userData);
+
+  const { login, name, public_repos, followers, following } = userData;
 
   return (
     <div>
       <h2>{name}</h2>
-      <img src={avatar_url} alt={login} />
       <p>Username: {login}</p>
       <p>Public Repositories: {public_repos}</p>
       <p>Followers: {followers}</p>

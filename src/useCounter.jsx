@@ -3,8 +3,8 @@ import { useState } from 'react';
 function useCounter(initialValue) {
   const [count, setCount] = useState(initialValue);
 
-  const increment = () => {
-    setCount(prevCount => prevCount + 1);
+  const increment = (number) => {
+    setCount(prevCount => prevCount + number);
   };
 
   const decrement = () => {

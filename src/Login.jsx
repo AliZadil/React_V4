@@ -1,41 +1,32 @@
-import React, { useState } from 'react';
+import React from 'react';
+import useFormInput from './useFormInput';
 
 export default function Login({ onLogin }) {
-  const [username, setUsername] = useState('');
-  const [password, setPassword] = useState('');
-  const [remember, setRemember] = useState(false);
-
-  const handleChange = (ev) => {
-    if (ev.target.name === 'username') {
-      setUsername(ev.target.value);
-    } else if (ev.target.name === 'password') {
-      setPassword(ev.target.value);
-    } else if (ev.target.name === 'remember') {
-      setRemember(ev.target.checked);
-    }
-  };
+  const username = useFormInput('');
+  const password = useFormInput('');
+  const remember = useFormInput(false);
 
   const handleLogin = () => {
-    onLogin({ username, password });
+    onLogin({ username: username.value, password: password.value });
   };
 
-  const isDisabled = username === '' || password === '';
+  const isDisabled = username.value === '' || password.value === '';
 
   return (
     <div>
       <input
         type="text"
         name="username"
-        value={username}
-        onChange={handleChange}
+        value={username.value}
+        onChange={username.onChange}
         placeholder="Username"
       />
       <br />
       <input
         type="password"
         name="password"
-        value={password}
-        onChange={handleChange}
+        value={password.value}
+        onChange={password.onChange}
         placeholder="Password"
       />
       <br />
@@ -43,8 +34,8 @@ export default function Login({ onLogin }) {
         <input
           type="checkbox"
           name="remember"
-          checked={remember}
-          onChange={handleChange}
+          checked={remember.value}
+          onChange={remember.onChange}
         />
         Remember me
       </label>

@@ -1,26 +1,20 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
+import useGithubUser from './useGithubUser';
+import './GithubUser.css';
 
 function GithubUser({ username }) {
-  const [userData, setUserData] = useState(null);
-
-  useEffect(() => {
-    fetch(`https://api.github.com/users/${username}`)
-      .then(response => response.json())
-      .then(data => setUserData(data))
-      .catch(error => console.log(error));
-  }, [username]);
+  const userData = useGithubUser(username);
 
   if (!userData) {
     return <div>Loading...</div>;
   }
 
-  console.log(userData); // to see the keys
-
-  const { login, name, public_repos, followers, following } = userData;
+  const { login, name, avatar_url, public_repos, followers, following } = userData;
 
   return (
-    <div>
+    <div className="github-user">
       <h2>{name}</h2>
+      <img className="profile-image" src={avatar_url} alt="Profile" />
       <p>Username: {login}</p>
       <p>Public Repositories: {public_repos}</p>
       <p>Followers: {followers}</p>

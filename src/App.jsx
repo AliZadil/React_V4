@@ -1,14 +1,10 @@
 import React from 'react';
-import Login from './Login';
+import GithubUserList from './GithubUserList';
 
 function App() {
-  const handleLogin = (credentials) => {
-    console.log('Login:', credentials);
-  };
-
   return (
     <div>
-      <Login onLogin={handleLogin} />
+      <GithubUserList />
     </div>
   );
 }

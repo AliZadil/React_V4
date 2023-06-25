@@ -1,11 +1,10 @@
 import React from 'react';
-import CarDetails from './CarDetails';
+import GithubUserList from './GithubUserList';
 
 function App() {
   return (
     <div>
-      <h1>Car Details Form</h1>
-      <CarDetails initialData={{model:"Audi A1",year:"2013",color:"White"}} />
+      <GithubUserList />
     </div>
   );
 }

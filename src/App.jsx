@@ -15,7 +15,6 @@ export default function App() {
       <Routes>
         <Route path="/" element={<InteractiveWelcome />} />
         <Route path="/counter" element={<Counter initialValue={10} incrementAmount={2} incrementInterval={500} />} />
-
       </Routes>
       <div>
         <p>Links</p>

@@ -2,30 +2,16 @@ import React from 'react';
 import CarDetails from './CarDetails';
 import DisplayLanguage from './DisplayLanguage';
 import {LanguageContext} from "./LanguageContext";
+import CustomCounter from "./CustomCounter";
 
-
-function App() {
-
-  const [language, setLanguage] = React.useState("en");
-  
-   const handleLanguageChange = (event) => {
-    setLanguage(event.target.value);
-  };
-  
-  return (
-    <div>
-      <LanguageContext.Provider value={language}>
-        <DisplayLanguage />
-
-        <select value={language} onChange={handleLanguageChange}>
-          <option value="en">English</option>
-          <option value="it">Italiano</option>
-          <option value="ro">Română</option>
-          <option value="tr">Türkçe</option>
-        </select>
-      </LanguageContext.Provider>
-    </div>
-  );
-};
+class App extends React.Component {
+  render() {
+    return (
+      <div>
+        <CustomCounter />
+      </div>
+    )
+  }
+}
 
 export default App;

@@ -1,44 +1,39 @@
-import React from "react";
+import React, {useContext} from "react";
 import { LanguageContext } from "./LanguageContext";
 
-export default class DisplayLanguage extends React.Component {
-  strings = {
-    en: {
-      LANGUAGE: "English",
-      SELECT_LANGUAGE: "Select language: ",
-      SELECTED_LANGUAGE: "Selected language: ",
-    },
-    tr: {
-      LANGUAGE: "Turkce",
-      SELECT_LANGUAGE: "Dil secin: ",
-      SELECTED_LANGUAGE: "Secili dil: ",
-    },
-    it: {
-      LANGUAGE: "Italiano",
-      SELECT_LANGUAGE: "Seleziona la lingua: ",
-      SELECTED_LANGUAGE: "Lingua selezionata: ",
-    },
-    ro: {
-      LANGUAGE: "Română",
-      SELECT_LANGUAGE: "Selecteaza limba: ",
-      SELECTED_LANGUAGE: "Limba selectată: ",
-    },
-  };
+export default function DisplayLanguage() {
 
-  render() {
+    const language = useContext(LanguageContext);
+
+    const strings = {
+        en: {
+            LANGUAGE: "English",
+            SELECT_LANGUAGE: "Select language: ",
+            SELECTED_LANGUAGE: "Selected language: ",
+        },
+        it: {
+            LANGUAGE: "Italiano",
+            SELECT_LANGUAGE: "Seleziona la lingua: ",
+            SELECTED_LANGUAGE: "Lingua selezionata: ",
+        },
+        ro: {
+          LANGUAGE: "Română",
+          SELECT_LANGUAGE: "Selecteaza limba: ",
+          SELECTED_LANGUAGE: "Limba selectată: ",
+        },
+        tr: {
+          LANGUAGE: "Türkçe",
+          SELECT_LANGUAGE: "Dil seç: ",
+          SELECTED_LANGUAGE: "Seçilen Dil: ",
+        },
+    }
+
     return (
-      <LanguageContext.Consumer>
-        {(language) => (
+        <div>
           <div>
-            <h1>{this.strings[language].LANGUAGE}</h1>
-            <div>
-              {this.strings[language].SELECTED_LANGUAGE}{" "}
-              {this.strings[language].LANGUAGE}
-            </div>
-            <label>{this.strings[language].SELECT_LANGUAGE}</label>
+            {strings[language].SELECTED_LANGUAGE} {strings[language].LANGUAGE}
           </div>
-        )}
-      </LanguageContext.Consumer>
+          <label>{strings[language].SELECT_LANGUAGE}</label>
+        </div>
     );
-  }
-}
+};

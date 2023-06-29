@@ -17,7 +17,7 @@ export default function App() {
         <Route path="/" element={<InteractiveWelcome />} />
         <Route path="/counter" element={<Counter initialValue={10} incrementAmount={2} incrementInterval={500} />} />
         <Route path="/users/:username" element={<ShowGithubUser></ShowGithubUser>} />
-        <Route path="/*" element={<h1>Wrong Route</h1>} />
+        <Route path="/*" element={<h1>404 Page Not Found</h1>} />
       </Routes>
       <div>
         <p>Links</p>

@@ -1,31 +1,59 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import useGithubUser from './useGithubUser';
+import './GithubUser.css';
 
 function GithubUser({ username }) {
-  const { userData, error, loading } = useGithubUser(username);
+  const { userData, refetchUserData } = useGithubUser(username);
 
-  if (loading) {
-    return <div>Loading...</div>;
-  }
+  useEffect(() => {
+    if (username) {
+      refetchUserData();
+    }
+  }, [username, refetchUserData]);
 
-  if (error) {
-    return <div>Error: {error.message}</div>;
-  }
-
-  if (!userData) {
+  if (!username) {
     return null;
   }
 
-  const { login, name, avatar_url, public_repos, followers, following } = userData;
+  if (!userData) {
+    return <div>Loading...</div>;
+  }
+
+  if (userData.message === 'Not Found') {
+    return (
+      <div className="container">
+        <h2>User not found.</h2>
+      </div>
+    );
+  }
 
   return (
-    <div className="github-user">
-      <h2>{name}</h2>
-      <img className="profile-image" src={avatar_url} alt="Profile" />
-      <p>Username: {login}</p>
-      <p>Public Repositories: {public_repos}</p>
-      <p>Followers: {followers}</p>
-      <p>Following: {following}</p>
+    <div className="container">
+      <img src={userData.avatar_url} alt="" className="profile-image" />
+      <p>
+        <h4>
+          <u>Username</u>
+        </h4>{' '}
+        {userData.login}
+      </p>
+      <p>
+        <h4>
+          <u>Location</u>
+        </h4>{' '}
+        {userData.location}
+      </p>
+      <p>
+        <b>Followers</b>: {userData.followers}, <b>Following</b>: {userData.following}
+      </p>
+      <p>
+        <h4>
+          <u>Public Repositories</u>
+        </h4>{' '}
+        {userData.public_repos}
+      </p>
+      <a href={userData.html_url}>
+        <button>View on GitHub</button>
+      </a>
     </div>
   );
 }

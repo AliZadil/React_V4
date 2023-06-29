@@ -1,16 +1,17 @@
-import { useEffect, useState } from 'react';
+import useSWR from 'swr';
+
+const fetcher = url => fetch(url).then(response => response.json());
 
 function useGithubUser(username) {
-  const [userData, setUserData] = useState(null);
+  const shouldFetch = !!username; // Check if the username is not null
 
-  useEffect(() => {
-    fetch(`https://api.github.com/users/${username}`)
-      .then(response => response.json())
-      .then(data => setUserData(data))
-      .catch(error => console.log(error));
-  }, [username]);
+  const { data: userData, error } = useSWR(shouldFetch ? `https://api.github.com/users/${username}` : null, fetcher);
 
-  return userData;
+  return {
+    userData,
+    error,
+    loading: !userData && !error
+  };
 }
 
 export default useGithubUser;
